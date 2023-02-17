@@ -5,7 +5,7 @@
 * 
 *  Name: Bregwin Jogi Student ID: 156619215 Date: 02/15/2023
 *
-*  Online (Cyclic) Link: https://expensive-slacks-tuna.cyclic.app/
+*  Online (Cyclic) Link: https://long-ruby-catfish-coat.cyclic.app
 *
 ********************************************************************************/ 
 
@@ -52,8 +52,7 @@ app.get("/", function(req,res){
 });
 
 //•	Add the following route: POST /posts/add
-app.post('/posts/add', function (req, res) {
-  upload.single("featureImage")
+app.post('/posts/add', upload.single('featureImage'), function (req, res) {
   let streamUpload = (req) => {
     return new Promise((resolve, reject) => {
         let stream = cloudinary.uploader.upload_stream(
@@ -70,18 +69,18 @@ app.post('/posts/add', function (req, res) {
     });
 };
 
-async function upload(req) {
-    let result = await streamUpload(req);
-    console.log(result);
-    return result;
-}
+  async function upload(req) {
+      let result = await streamUpload(req);
+      console.log(result);
+      return result;
+  }
 
-upload(req).then((uploaded)=>{
-    req.body.featureImage = uploaded.url;
-    addPost(req.body)
-    res.redirect('/posts')
+  upload(req).then((uploaded)=>{
+      req.body.featureImage = uploaded.url;
+      blog_service.addPost(req.body)
+      res.redirect('/posts')
 
-});
+  });
 
 })
 

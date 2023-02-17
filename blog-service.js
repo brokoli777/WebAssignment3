@@ -99,7 +99,7 @@ function addPost(postData){
         postData.id = posts.length +1
 
         posts.push(postData)
-        resolve(postDate)
+        resolve(postData);
     });
     
 }

@@ -13,7 +13,7 @@
 
 var express = require("express");
 var path = require("path");
-var message = require("./blog-service.js");
+const blog_service = require('./blog-service');
 var app = express();
 
 const multer = require("multer");
@@ -31,7 +31,7 @@ const upload = multer(); // no { storage: storage } since we are not using disk 
 
 app.use(express.static(__dirname + '/public'));
 
-const blog_service = require('./blog-service');
+
 
 
 
